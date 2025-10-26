@@ -1,0 +1,66 @@
+.lemon-regular {
+    font-family: "Lemon", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Lemon', serif;
+}
+
+button {
+    font-family: 'Lemon', serif;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: inline;
+}
+
+#btns {
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
+.turquesa {
+    background-color: #40e0d0;
+    color: white;
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: hsl(204, 86%, 53%);
+
+    --_m:
+        conic-gradient(#0000 10%, #000),
+        linear-gradient(#000 0 0) content-box;
+    -webkit-mask: var(--_m);
+    mask: var(--_m);
+    -webkit-mask-composite: source-out;
+    mask-composite: subtract;
+    animation: l3 1s infinite linear;
+}
+
+@keyframes l3 {
+    to {
+        transform: rotate(1turn)
+    }
+}
+
+figcaption{
+    padding: 10px;
+  }
+  figure{
+    padding: 10px;
+  }

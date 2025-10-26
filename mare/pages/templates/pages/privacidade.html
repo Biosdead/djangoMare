@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google-adsense-account" content="ca-pub-8048981882025505">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8048981882025505" crossorigin="anonymous"></script>
+    <title>Privacidade • Marés de Salinas</title>
+    <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'pages/icones/favicon.ico' %}">
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div class="title-block">
+          <h1 class="app-title">Política de Privacidade</h1>
+          <p class="app-subtitle">Como tratamos seus dados</p>
+        </div>
+      </header>
+
+      <section class="empty">
+        <div class="empty-card" style="max-width: 900px; margin: 0 auto; text-align: left;">
+          <h2 class="empty-title" style="font-size:20px; margin-bottom:10px;">Compromisso</h2>
+          <p style="margin:0 0 14px 0; line-height:1.6;">A sua privacidade é importante para nós. É política do Marés de Salinas respeitar a sua privacidade em relação a qualquer informação sua que possamos coletar neste site e em outros que operamos.</p>
+
+          <h2 class="empty-title" style="font-size:20px; margin:14px 0 10px 0;">Coleta e uso</h2>
+          <p style="margin:0 0 14px 0; line-height:1.6;">Solicitamos informações pessoais apenas quando realmente precisamos para fornecer um serviço. Fazemos por meios justos e legais, com seu conhecimento e consentimento, informando por que estamos coletando e como será usado.</p>
+
+          <h2 class="empty-title" style="font-size:20px; margin:14px 0 10px 0;">Retenção e proteção</h2>
+          <p style="margin:0 0 14px 0; line-height:1.6;">Reteremos os dados apenas pelo tempo necessário para fornecer o serviço solicitado. Protegemos os dados contra perda, roubo, acesso, divulgação, cópia, uso ou modificação não autorizados.</p>
+
+          <h2 class="empty-title" style="font-size:20px; margin:14px 0 10px 0;">Compartilhamento</h2>
+          <p style="margin:0 0 14px 0; line-height:1.6;">Não compartilhamos informações pessoais publicamente ou com terceiros, exceto quando exigido por lei. Links externos podem ter políticas de privacidade próprias, sobre as quais não temos controle.</p>
+
+          <h2 class="empty-title" style="font-size:20px; margin:14px 0 10px 0;">Responsabilidade do usuário</h2>
+          <ul style="margin:0 0 14px 20px; line-height:1.6;">
+            <li>Não realizar atividades ilegais ou contrárias à boa fé e à ordem pública.</li>
+            <li>Não difundir conteúdo ilegal, discriminatório ou que viole direitos humanos.</li>
+            <li>Não introduzir software malicioso que possa causar danos.</li>
+          </ul>
+
+          <h2 class="empty-title" style="font-size:20px; margin:14px 0 10px 0;">Contato</h2>
+          <p style="margin:0 0 4px 0; line-height:1.6;">Dúvidas? Escreva para <a href="mailto:lennonsfurtado@gmail.com">lennonsfurtado@gmail.com</a>.</p>
+          <small style="color:var(--muted);">Vigente desde 26/03/2024 16:34</small>
+        </div>
+      </section>
+
+      <section class="ads" style="margin-top:16px;">
+        <ins class="adsbygoogle" style="display:block"
+             data-ad-client="ca-pub-8048981882025505"
+             data-ad-slot="0000000000"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </section>
+
+      <footer class="footer-bar">
+        <div class="foot-left">
+          <a href="{% url 'index' %}">Início</a>
+          <span class="sep">•</span>
+          <a href="{% url 'sobre' %}">Sobre</a>
+        </div>
+        <div class="foot-right">
+          <a href="https://play.google.com/store/apps/details?id=co.median.android.plaerl">
+            <img class="store-badge" src="{% static 'pages/imagens/disponivel-google-play-badge-1.png' %}" alt="Disponível no Google Play">
+          </a>
+        </div>
+      </footer>
+    </main>
+  </body>
+  </html>

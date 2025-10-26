@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google-adsense-account" content="ca-pub-8048981882025505">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8048981882025505" crossorigin="anonymous"></script>
+    <title>Sobre • Marés de Salinas</title>
+    <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'pages/icones/favicon.ico' %}">
+  </head>
+  <body>
+    <main class="page">
+      <header class="header">
+        <div class="title-block">
+          <h1 class="app-title">Sobre</h1>
+          <p class="app-subtitle">Quem sou</p>
+        </div>
+      </header>
+
+      <section class="empty">
+        <div class="empty-card" style="max-width: 820px; margin: 0 auto; text-align: left;">
+          <div style="display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+            <img src="{% static 'pages/imagens/perfil.jpg' %}" alt="Foto de perfil" style="width:96px; height:96px; border-radius:20px; object-fit:cover; border:1px solid var(--border);">
+            <div>
+              <h2 class="empty-title" style="margin:0 0 4px 0; font-size:22px;">Lennon Sales Furtado</h2>
+              <p class="empty-subtitle" style="margin:0;">Professor e programador • IFPA</p>
+            </div>
+          </div>
+          <p style="margin:12px 0 0 0; line-height:1.6; color: var(--text);">
+            Possuo doutorado em Ciências da Computação pela Universidade Federal do Pará (UFPA, 2016–2021), mestrado em Ciências da Computação com ênfase em Gestão da Informação (UFPA, 2014–2016) e bacharelado em Engenharia de Computação (IESAM, 2009–2013). Atualmente sou professor EBTT no Instituto Federal do Pará (IFPA), campus Paragominas, desde 2019. Tenho experiência nas áreas de Jogos Digitais, Gamificação, Visualização de Informação, Engenharia de Software, Medição e Melhoria de Processos de Software e Programação Web.
+          </p>
+        </div>
+      </section>
+
+      <section class="ads" style="margin-top:16px;">
+        <ins class="adsbygoogle" style="display:block"
+             data-ad-client="ca-pub-8048981882025505"
+             data-ad-slot="0000000000"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </section>
+
+      <footer class="footer-bar">
+        <div class="foot-left">
+          <a href="{% url 'index' %}">Início</a>
+          <span class="sep">•</span>
+          <a href="mailto:lennonsfurtado@gmail.com">Contato</a>
+        </div>
+        <div class="foot-right">
+          <a href="https://play.google.com/store/apps/details?id=co.median.android.plaerl">
+            <img class="store-badge" src="{% static 'pages/imagens/disponivel-google-play-badge-1.png' %}" alt="Disponível no Google Play">
+          </a>
+        </div>
+      </footer>
+    </main>
+  </body>
+  </html>

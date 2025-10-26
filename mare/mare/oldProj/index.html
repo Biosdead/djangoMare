@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- TÍTULO OTIMIZADO -->
+  <title>Maré em Salinópolis (Salinas) Hoje | Tábua de Maré e Horários</title>
+  
+  <!-- META DESCRIPTION OTIMIZADA -->
+  <meta name="description" content="Confira a tábua de maré de Salinópolis (Salinas-PA) com horários de maré alta e baixa. Atualizado diariamente para banhistas, pescadores e turistas.">
+
+  <!-- Styles e Scripts -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="./styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+  <script src="banco.js"></script>
+  <script src="index.js"></script>
+  <script charset="UTF-8" src="https://cdn.sendwebpush.com/sendwebpush/client_services/68c84f6763502.js" async></script>
+
+  
+</head>
+
+<body>
+  <!-- H1 PRINCIPAL -->
+  <header class="hero is-info has-text-centered">
+    <div class="hero-body">
+      <h1 class="title">Maré em Salinópolis (Salinas) Hoje</h1>
+      <hr>
+      <p class="subtitle">Horários de maré alta e baixa – Confira a tábua de marés atualizada!</p>
+    </div>
+  </header>
+
+  <section class="section has-text-centered">
+    <h2 class="title" id="Today">Data de Hoje: </h2>
+    <hr>
+    <!-- Clima -->
+    <h2 class="title" id="clima">Clima em Salinópolis</h2>
+    <h3 id="temp_c">Temperatura: Carregando...</h3>
+    <h3 id="sensation_c">Sensação Térmica: Carregando...</h3>
+    <h3 id="weatherCondition">Previsão: Carregando...</h3>
+    <img class="loader" id="weatherIcon" src="./icones/loading.gif" alt="Condição do Tempo">
+
+    <hr>
+    <h3 class="title">
+      Marés de <span id="weekDay"></span>:
+    </h3>
+  </section>
+
+  <!-- Seção das Marés -->
+  <nav id="tides" class="level">
+    <!-- Maré 1 -->
+    <div class="level-item has-text-centered">
+      <div>
+        <p id="tideType1" class="heading">Baixa</p>
+        <p id="FirstTide" class="title">--:--</p>
+        <p class="heading">Altura</p>
+        <p id="FirstTideHeight" class="title">-- m</p>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Maré 2 -->
+    <div class="level-item has-text-centered">
+      <div>
+        <p id="tideType2" class="heading">Alta</p>
+        <p id="SecondTide" class="title">--:--</p>
+        <p class="heading">Altura</p>
+        <p id="SecondTideHeight" class="title">-- m</p>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Maré 3 -->
+    <div class="level-item has-text-centered">
+      <div>
+        <p id="tideType3" class="heading">Baixa</p>
+        <p id="ThirdTide" class="title">--:--</p>
+        <p class="heading">Altura</p>
+        <p id="ThirdTideHeight" class="title">-- m</p>
+      </div>
+    </div>
+    <hr>
+
+    <!-- Maré 4 (caso exista) -->
+    <div id="t4" class="level-item has-text-centered invisible">
+      <div id="tide4">
+        <p id="tideType4" class="heading"></p>
+        <p id="FourthTide" class="title">--:--</p>
+        <p class="heading">Altura</p>
+        <p id="FourthTideHeight" class="title">-- m</p>
+      </div>
+    </div>
+  </nav>
+
+  <div class="section has-text-centered">
+    <p>
+      <strong>Tábua de maré em Salinópolis</strong> – Consulte os horários de maré alta e maré baixa para planejar seu dia na praia! Nosso banco de dados é alimentado pelos dados da marinha do Brasil para oferecer informações precisas e confiáveis.
+    </p>
+  </div>
+
+  <footer class="footer has-text-centered">
+    <script src="api.js"></script>
+    <p>
+      <strong>Marés de Salinas</strong> - desenvolvido por <a href="sobre.html">Lennon Sales Furtado</a>.
+      <br>
+      <small>Email: <a href="mailto:lennonsfurtado@gmail.com">lennonsfurtado@gmail.com</a></small>
+    </p>
+    <br>
+    <small>Baixe o app para Android:</small>
+    <br>
+    <a href="https://play.google.com/store/apps/details?id=co.median.android.plaerl">
+      <img src="./imagens/disponivel-google-play-badge-1.png" alt="Disponível no Google Play" width="35%">
+    </a>
+    <!-- <div id="ads300x250"> -->
+      <!-- Código do Ads -->
+      <!-- <script async="async" data-cfasync="false"
+      src="//pl25716889.profitablecpmrate.com/ad76d6c58cd9d12359d5cf78859e8870/invoke.js"></script>
+    <div id="container-ad76d6c58cd9d12359d5cf78859e8870"></div>
+    </div> -->
+  </footer>
+</body>
+</html>

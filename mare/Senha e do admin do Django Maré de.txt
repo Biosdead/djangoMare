@@ -1,0 +1,4 @@
+Senha e do admin do Django Maré de Salinas.
+
+User: lennonSF
+Senha: RTX4060Ti
