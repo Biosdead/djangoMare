@@ -1,4 +1,4 @@
-{% load static %}
+﻿{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -37,11 +37,7 @@
     "url": "{{ canonical_url }}",
     "inLanguage": "pt-BR",
     "description": "Tábua de maré em Salinópolis (PA): horários de maré alta e baixa atualizados para planejar seu dia na praia. Dados da Marinha do Brasil, precisos e confiáveis.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Marés de Salinas",
-      "url": "{{ canonical_url }}"
-    }
+    "isPartOf": { "@type": "WebSite", "name": "Marés de Salinas", "url": "{{ canonical_url }}" }
   }
   </script>
   <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
@@ -59,6 +55,13 @@
         <span class="weekday">{{ weekday }}</span>
       </div>
     </header>
+
+    <nav class="day-nav">
+      <a class="btn btn-ghost" href="{{ prev_link }}" aria-label="Dia anterior" style="color: gray;">← Dia anterior</a>
+      <a class="btn" style="background: var(--accent);" href="{{ today_link }}" aria-label="Hoje">Hoje</a>
+      <a class="btn btn-ghost" href="{{ next_link }}" aria-label="Dia seguinte" style="color: gray;">Dia seguinte →</a>
+    </nav>
+
     <div class="share-bar">
       <a class="btn btn-whatsapp" href="{{ whatsapp_share_url }}" target="_blank" rel="noopener noreferrer" aria-label="Compartilhar no WhatsApp">
         <svg viewBox="0 0 32 32" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M19.11 17.02c-.28-.14-1.64-.8-1.9-.89-.26-.1-.45-.14-.63.14-.19.28-.73.89-.9 1.07-.17.19-.33.21-.61.07-.28-.14-1.19-.44-2.27-1.4-.84-.75-1.41-1.68-1.58-1.96-.16-.28-.02-.43.12-.57.13-.13.28-.33.42-.5.14-.17.19-.28.28-.47.09-.19.05-.36-.02-.5-.07-.14-.63-1.51-.86-2.07-.23-.55-.46-.47-.63-.48l-.54-.01c-.19 0-.5.07-.76.36-.26.28-1 1-1 2.43 0 1.43 1.02 2.81 1.16 3 .14.19 2.01 3.07 4.86 4.3.68.29 1.21.46 1.62.59.68.22 1.29.19 1.77.12.54-.08 1.64-.67 1.87-1.31.23-.64.23-1.19.16-1.31-.07-.12-.26-.19-.54-.33zM16.02 4C9.93 4 5 8.92 5 15.01c0 1.93.5 3.75 1.39 5.33L5 27l6.84-1.79c1.54.84 3.31 1.32 5.18 1.32 6.09 0 11.02-4.93 11.02-11.02C28.04 8.92 22.11 4 16.02 4zm0 19.98c-1.73 0-3.34-.5-4.69-1.36l-.34-.21-4.06 1.06 1.09-3.96-.22-.36a9.023 9.023 0 0 1-1.41-4.85c0-4.98 4.04-9.02 9.02-9.02s9.02 4.04 9.02 9.02-4.04 9.02-9.02 9.02z"/></svg>
@@ -110,12 +113,20 @@
       </div>
     </section>
     {% endif %}
-    
+
+    <section class="day-picker" aria-label="Selecionar data">
+      <form method="get" action="" class="day-picker-form">
+        <label for="date-input" class="sr-only">Escolha a data</label>
+        <input id="date-input" type="date" name="date" value="{{ date|date:'Y-m-d' }}">
+        <button class="btn" type="submit" style="color: gray;">Ver Marés do Dia</button>
+      </form>
+    </section>
+
     <section class="info">
       <br>
       <div class="empty-card">
         <p>
-          Tábua de maré em Salinópolis – Consulte os horários de maré alta e maré baixa para planejar seu dia na praia! Nosso banco de dados é alimentado pelos dados da marinha do Brasil para oferecer informações precisas e confiáveis.
+          Tábua de maré em Salinópolis — Consulte os horários de maré alta e maré baixa para planejar seu dia na praia! Nosso banco de dados é alimentado pelos dados da Marinha do Brasil para oferecer informações precisas e confiáveis.
         </p>
       </div>
     </section>
@@ -126,7 +137,9 @@
         <span class="sep">•</span>
         <a href="{% url 'sobre' %}">Sobre</a>
         <span class="sep">•</span>
-        <a href="{% url 'privacidade' %}">Privacidade</a>
+        <a href="{% url 'privacidade' %}">Privacidade e Contato</a>
+        <!-- <span class="sep">•</span>
+        <a href="{% url 'calendar_year' date.year %}">Calendário {{ date.year }}</a> -->
       </div>
       <div class="foot-right">
         <a href="https://play.google.com/store/apps/details?id=co.median.android.plaerl">
@@ -146,9 +159,7 @@
         const appUrl = 'instagram://app';
         const webUrl = 'https://www.instagram.com/';
         const start = Date.now();
-        // Try opening the Instagram app
         window.location.href = appUrl;
-        // Fallback to web if the app did not open
         setTimeout(function(){
           if (Date.now() - start < 2000) {
             window.open(webUrl, '_blank');
@@ -161,9 +172,8 @@
           try {
             await navigator.share({ title: 'Marés de Salinópolis', text: shareText, url: shareUrl });
             return;
-          } catch (e) { /* usuário cancelou ou falhou; segue fallback */ }
+          } catch (e) { }
         }
-        // Optional: copy text to clipboard before opening the app
         try { await navigator.clipboard.writeText(shareText + '\n' + shareUrl); } catch (e) {}
         openInstagramApp();
       });
@@ -171,3 +181,4 @@
   </script>
 </body>
 </html>
+

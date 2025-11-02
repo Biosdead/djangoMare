@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calendário de marés — {{ year }}</title>
+  <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="title-block">
+        <h1 class="app-title">Calendário de marés</h1>
+        <p class="app-subtitle">Ano {{ year }}</p>
+      </div>
+      <div class="date-block">
+        <a class="btn" style="background: var(--accent);" href="{% url 'index' %}">Hoje</a>
+      </div>
+    </header>
+
+    <section class="year-grid">
+      {% for m in months %}
+      <article class="month-card">
+        <div class="month-header">{{ m.name }} {{ year }}</div>
+        <div class="weekday-row">
+          <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+        </div>
+        <div class="month-grid">
+          {% for week in m.weeks %}
+            {% for cell in week %}
+              <a class="day-cell {% if not cell.in_month %}out{% endif %} {% if cell.has_data %}has-data{% endif %}"
+                 href="{% url 'day_detail' cell.date.year cell.date.month cell.date.day %}" title="{{ cell.date|date:'d/m/Y' }}">
+                <div class="dnum">{{ cell.date.day }}</div>
+                {% if cell.has_data %}
+                  <div class="mini-tides">
+                    {% for t in cell.tides %}
+                      <span class="mini {% if t.type == 'Maré Alta' %}high{% else %}low{% endif %}">{{ t.time|time:'H:i' }}</span>
+                    {% endfor %}
+                  </div>
+                {% endif %}
+              </a>
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+  </main>
+</body>
+</html>

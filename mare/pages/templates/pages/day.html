@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marés — {{ date|date:"d" }} de {{ month_name }} de {{ date|date:"Y" }}</title>
+  <link rel="stylesheet" href="{% static 'pages/styles.css' %}">
+</head>
+<body>
+  <main class="page">
+    <header class="header">
+      <div class="title-block">
+        <h1 class="app-title">Marés do dia</h1>
+        <p class="app-subtitle">{{ date|date:"d" }} de {{ month_name }} de {{ date|date:"Y" }} — {{ weekday }}</p>
+      </div>
+      <div class="date-block">
+        <a class="btn" style="background: var(--accent);" href="{% url 'calendar_year' date.year %}">Calendário {{ date.year }}</a>
+      </div>
+    </header>
+
+    {% if has_data %}
+    <section class="tide-grid" aria-label="Marés do dia">
+      {% for t in tides %}
+      <article class="tide-card {% if t.type == 'Maré Alta' %}high{% else %}low{% endif %}" aria-label="{{ t.type }}">
+        <div class="card-top">
+          <div class="icon-circle {% if t.type == 'Maré Alta' %}high{% else %}low{% endif %}" aria-hidden="true">
+            {% if t.type == 'Maré Alta' %}
+            <svg viewBox="0 0 24 24" width="20" height="20" role="img"><path fill="currentColor" d="M12 4l6 6h-4v8h-4V10H6z"/></svg>
+            {% else %}
+            <svg viewBox="0 0 24 24" width="20" height="20" role="img"><path fill="currentColor" d="M12 20l-6-6h4V6h4v8h4z"/></svg>
+            {% endif %}
+          </div>
+          <span class="chip {% if t.type == 'Maré Alta' %}chip-high{% else %}chip-low{% endif %}">{{ t.type }}</span>
+        </div>
+        <div class="time" aria-label="Horário">{{ t.time|time:"H:i" }}</div>
+        <div class="meta">
+          <span class="label">Altura</span>
+          <span class="value">{{ t.height }} m</span>
+        </div>
+      </article>
+      {% endfor %}
+    </section>
+    {% else %}
+    <section class="empty">
+      <div class="empty-card">
+        <p class="empty-title">Sem dados</p>
+        <p class="empty-subtitle">Não há marés cadastradas para esta data.</p>
+      </div>
+    </section>
+    {% endif %}
+  </main>
+</body>
+</html>
+

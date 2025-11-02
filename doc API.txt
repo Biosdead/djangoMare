@@ -1,0 +1,63 @@
+Implementei uma API REST completa com Django REST Framework para ler e cadastrar marés, e incluí documentação de uso.
+
+O que foi adicionado
+
+DRF instalado e configurado:
+requirements.txt: djangorestframework
+mare/mare/settings.py: adiciona 'rest_framework' e configurações básicas
+Serializers:
+mare/mare_backend/serializers.py
+TideSerializer: cria/atualiza marés; aceita date/weekday; cria TideDay se necessário
+TideDaySerializer: retorna um dia com marés aninhadas (read-only)
+ViewSets e filtros:
+mare/mare_backend/api_views.py
+TideDayViewSet: lista/detalhe com filtros por date, start/end
+TideViewSet: CRUD completo; filtro por date
+Rotas da API:
+mare/mare/urls.py: router DRF em /api/
+GET /api/tidedays/, /api/tidedays/?date=YYYY-MM-DD, /api/tidedays/?start=YYYY-MM-DD&end=YYYY-MM-DD
+GET/POST /api/tides/, GET/PUT/PATCH/DELETE /api/tides/{id}/
+Documentação detalhada:
+docs/API.md com exemplos de curl para listar e cadastrar marés
+Como usar localmente
+
+Instalar dependências: py -m pip install -r requirements.txt
+Rodar o servidor: py manage.py runserver
+Testar endpoints (exemplos):
+GET dias: http://127.0.0.1:8000/api/tidedays/?date=2025-01-12
+POST maré:
+POST http://127.0.0.1:8000/api/tides/
+body:
+{"order": 1, "time": "06:27", "height": 4.55, "date": "2025-01-12", "weekday": "DOM"}
+Notas importantes
+
+POST /api/tides/ cria/atualiza com base em (date, order); se o dia não existir, é criado.
+O campo weekday no POST é opcional; se informado, atualiza o rótulo do dia.
+Endpoints públicos por padrão. Para produção, recomendo habilitar autenticação/permissions no DRF antes de permitir escrita (posso configurar TokenAuth rapidamente se quiser).
+A API retorna JSON e também a interface Browsable API do DRF para facilitar testes no navegador.
+Quer que eu adicione autenticação por token (TokenAuthentication) e permissões de escrita para administradores apenas? Posso também publicar a doc como rota HTML usando Redoc/Swagger se preferir.
+
+Pronto — publiquei a documentação da API com Swagger e Redoc.
+
+Onde acessar
+
+OpenAPI (JSON): /api/schema/
+Swagger UI: /api/schema/swagger-ui/
+Redoc: /api/schema/redoc/
+Arquivos modificados
+
+requirements.txt: adiciona drf-spectacular
+mare/mare/settings.py: adiciona 'drf_spectacular' em INSTALLED_APPS, define DEFAULT_SCHEMA_CLASS e SPECTACULAR_SETTINGS (título, descrição, versão)
+mare/mare/urls.py: adiciona rotas da schema e UIs
+Como testar
+
+Instale dependências: py -m pip install -r requirements.txt
+Rode: py manage.py runserver
+Abra no navegador:
+http://127.0.0.1:8000/api/schema/swagger-ui/
+http://127.0.0.1:8000/api/schema/redoc/
+Personalizações rápidas (posso aplicar se quiser)
+
+Adicionar segurança por Token/Bearer no schema (para futuras permissões).
+Ajustar descrição por endpoint e exemplos com extend_schema nas views.
+Expor docs também em produção (EB/App Runner) em caminho público.
