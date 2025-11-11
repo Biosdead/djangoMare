@@ -165,6 +165,15 @@ def ads_txt(request):
     return HttpResponse(content, content_type="text/plain")
 
 
+def robots_txt(request):
+    content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "# Sitemaps (adicione se tiver)\n"
+    )
+    return HttpResponse(content, content_type="text/plain")
+
+
 def calendar_year(request, year: int):
     meses_pt = [
         "janeiro", "fevereiro", "março", "abril", "maio", "junho",
